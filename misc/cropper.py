@@ -79,7 +79,13 @@ def on_mouse_up(event):
 
     end_x, end_y = event.x, event.y
 
-    if start_x and start_y and end_x and end_y:
+    # Coordinates can legitimately be 0, so explicitly check for None
+    if (
+        start_x is not None
+        and start_y is not None
+        and end_x is not None
+        and end_y is not None
+    ):
         # Ensure coordinates are correct (top-left to bottom-right)
         left, upper, right, lower = (
             min(start_x, end_x),
